@@ -1,26 +1,194 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #f1ebe0;
+  --paper-2: #e7dfd1;
+  --paper-3: #ddd3c2;
+  --ink: #161310;
+  --ink-soft: #3c352e;
+  --silver: #8f877c;
+  --line: #161310;
+  --safelight: #e39b1a;
+  --safelight-soft: #f3c56a;
+  --lens: #2f5d5a;
+  --stop: #9c3144;
+  --fix: #4d6b3c;
+  --shadow: #161310;
+  --overlay: rgb(22 19 16 / 0.48);
+  --radius: 3px;
+  --stamp: 3px 3px 0 0 var(--shadow);
+}
+
+.dark {
+  --paper: #12100e;
+  --paper-2: #1c1916;
+  --paper-3: #27221d;
+  --ink: #efe6d6;
+  --ink-soft: #c9bfb0;
+  --silver: #8a8278;
+  --line: #efe6d6;
+  --safelight: #e8a317;
+  --safelight-soft: #c9892c;
+  --lens: #7eb6b1;
+  --stop: #e06b7c;
+  --fix: #8fba74;
+  --shadow: #050403;
+  --overlay: rgb(5 4 3 / 0.72);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-paper-3: var(--paper-3);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-silver: var(--silver);
+  --color-line: var(--line);
+  --color-safelight: var(--safelight);
+  --color-safelight-soft: var(--safelight-soft);
+  --color-lens: var(--lens);
+  --color-stop: var(--stop);
+  --color-fix: var(--fix);
+  --color-overlay: var(--overlay);
+  --font-sans: var(--font-outfit);
+  --font-display: var(--font-fraunces);
+  --font-mono: var(--font-plex);
+  --shadow-stamp: var(--stamp);
+  --radius-ob: var(--radius);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--paper);
+  color: var(--ink);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.011em;
+}
+
+::selection {
+  background: var(--safelight);
+  color: #161310;
+}
+
+:focus-visible {
+  outline: 2px solid var(--safelight);
+  outline-offset: 3px;
+}
+
+.font-display {
+  font-family: var(--font-fraunces), ui-serif, Georgia, serif;
+  font-optical-sizing: auto;
+}
+
+.catalog {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--silver);
+}
+
+.crop-frame {
+  position: relative;
+}
+
+.crop-frame::before,
+.crop-frame::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--ink);
+  pointer-events: none;
+}
+
+.crop-frame::before {
+  top: -1px;
+  left: -1px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.crop-frame::after {
+  right: -1px;
+  bottom: -1px;
+  border-left: 0;
+  border-top: 0;
+}
+
+.crop-frame-tr,
+.crop-frame-bl {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--ink);
+  pointer-events: none;
+}
+
+.crop-frame-tr {
+  top: -1px;
+  right: -1px;
+  border-left: 0;
+  border-bottom: 0;
+}
+
+.crop-frame-bl {
+  bottom: -1px;
+  left: -1px;
+  border-right: 0;
+  border-top: 0;
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  opacity: 0.09;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.85'/%3E%3C/svg%3E");
+}
+
+.dark .grain {
+  mix-blend-mode: overlay;
+  opacity: 0.14;
+}
+
+.vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 48%, rgb(22 19 16 / 0.16) 100%);
+}
+
+.dark .vignette {
+  background: radial-gradient(ellipse at center, transparent 40%, rgb(0 0 0 / 0.45) 100%);
+}
+
+.press-shadow {
+  box-shadow: var(--stamp);
+}
+
+.press-shadow:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 0 var(--shadow);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper-2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ink);
+  border: 2px solid var(--paper-2);
 }

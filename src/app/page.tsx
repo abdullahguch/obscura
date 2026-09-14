@@ -1,69 +1,112 @@
-import Image from "next/image";
+import Link from "next/link";
+import { buttonVariants } from "@/library/components/button";
+import { siteConfig } from "@/site/config";
+import { HeroPlayground } from "@/site/hero-playground";
+import { components } from "@/site/registry";
 
-export default function Home() {
+const pillars = [
+  {
+    number: "I",
+    title: "Grain",
+    body: "Interfaces don't need to be sterile. Obscura keeps paper tooth, ink weight, and a film of noise on the surface.",
+  },
+  {
+    number: "II",
+    title: "Weight",
+    body: "Hard borders and letterpress shadows. Buttons yield when pressed. Nothing floats in a nameless gray void.",
+  },
+  {
+    number: "III",
+    title: "Light",
+    body: "One safelight. Amber for focus, signal, and the moment something matters. Everything else is paper and ink.",
+  },
+];
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <main className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+      <section className="grid items-end gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+        <div>
+          <p className="catalog mb-6">Component library · v{siteConfig.version}</p>
+          <h1 className="font-display text-6xl leading-[0.9] tracking-tight italic sm:text-8xl">
+            {siteConfig.name}
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="mt-6 max-w-xl text-lg text-ink-soft sm:text-xl">
+            {siteConfig.tagline} {siteConfig.componentCount} primitives you copy into your
+            repo — not a black box you import and hope survives the next major version.
           </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link href="/docs" className={buttonVariants({ className: "px-6" })}>
+              Open the darkroom
+            </Link>
+            <Link href="/docs/components" className={buttonVariants({ variant: "outline" })}>
+              Browse plates
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="border border-ink bg-paper-2 p-5 font-mono text-xs leading-relaxed text-ink-soft">
+          <p className="catalog mb-3 text-ink">installation</p>
+          <p>cp -r src/library your-app/src/library</p>
+          <p className="mt-2"># own the source</p>
+          <p># restyle the tokens</p>
+          <p># never wait on a release</p>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="mt-20">
+        <HeroPlayground />
+      </section>
+
+      <section className="mt-24 grid gap-px border border-ink bg-ink sm:grid-cols-3">
+        {pillars.map((pillar) => (
+          <article key={pillar.title} className="bg-paper p-6 sm:p-8">
+            <p className="catalog">{pillar.number}</p>
+            <h2 className="mt-4 font-display text-4xl italic">{pillar.title}</h2>
+            <p className="mt-4 text-sm leading-relaxed text-ink-soft">{pillar.body}</p>
+          </article>
+        ))}
+      </section>
+
+      <section className="mt-24">
+        <div className="mb-8 flex items-end justify-between gap-4">
+          <div>
+            <p className="catalog">Catalog</p>
+            <h2 className="mt-2 font-display text-4xl italic sm:text-5xl">
+              {siteConfig.componentCount} plates
+            </h2>
+          </div>
+          <Link href="/docs/components" className="text-sm underline decoration-ink/30 underline-offset-4">
+            View all
+          </Link>
+        </div>
+        <div className="grid gap-px border border-ink bg-ink sm:grid-cols-2 lg:grid-cols-3">
+          {components.map((item) => (
+            <Link
+              key={item.slug}
+              href={`/docs/components/${item.slug}`}
+              className="flex items-baseline justify-between gap-4 bg-paper px-4 py-4 hover:bg-safelight"
+            >
+              <span className="font-display text-xl italic">{item.name}</span>
+              <span className="catalog">{item.number}</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-24 border border-ink bg-ink p-8 text-paper sm:p-12">
+        <h2 className="max-w-2xl font-display text-4xl italic sm:text-5xl">
+          Built to be copied, restyled, and published under your name.
+        </h2>
+        <p className="mt-4 max-w-xl text-paper/70">
+          Obscura is the docs site and the library in one repository. Clone it, keep
+          `src/library`, throw away the marketing if you want, and ship.
+        </p>
+        <div className="mt-8">
+          <Link href="/docs/installation" className={buttonVariants({ variant: "lamp" })}>
+            Installation notes
+          </Link>
+        </div>
+      </section>
+    </main>
   );
 }

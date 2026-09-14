@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Obscura
 
-## Getting Started
+A React component library developed in the darkroom.
 
-First, run the development server:
+Not another zinc-and-radius kit. Obscura is **39 primitives** with fiber-paper surfaces, letterpress shadows, catalog type, and a single amber safelight for signal. The component types will feel familiar (buttons, dialogs, tables). The design will not.
+
+You copy the source into your project. You own every line.
+
+## Stack
+
+- React 19 + Next.js (docs site)
+- TypeScript
+- Tailwind CSS v4
+- No Radix, no Headless UI — accessible HTML written in this repo
+
+## Run the site
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Use the library
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Copy `src/library` into your app.
+2. Copy the CSS tokens from `src/app/globals.css` (`:root`, `.dark`, `@theme inline`).
+3. Install helpers:
 
-## Learn More
+```bash
+npm install clsx tailwind-merge class-variance-authority
+```
 
-To learn more about Next.js, take a look at the following resources:
+```tsx
+import { Button } from "@/library";
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+export function Proof() {
+  return <Button variant="lamp">Expose</Button>;
+}
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Theming
 
-## Deploy on Vercel
+Studio light and darkroom are CSS variables. Edit `--paper`, `--ink`, `--safelight`, `--stamp` to restyle the whole kit. See `/docs/theming` on the site.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Repository layout
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src/library/          ← the component library (copy this)
+src/app/              ← marketing + docs site
+src/site/             ← website chrome, registry, demos
+```
+
+## Deploy (Hestia)
+
+The site is a static export. `npm run build` writes HTML/CSS/JS to `out/`. Upload that folder’s contents to the subdomain’s `public_html`.
+
+1. Point DNS: `A` record `obscura` → your VPS IP.
+2. In Hestia: **Web → Add Web Domain** → `obscura.abdullahguc.com`.
+3. Enable **SSL / Let’s Encrypt** after DNS has propagated.
+4. Build and upload:
+
+```bash
+npm run build
+rsync -avz --delete --exclude '.well-known' out/ USER@YOUR_VPS:/home/USER/web/obscura.abdullahguc.com/public_html/
+```
+
+Replace `USER` with the Hestia account that owns the domain.
+
+## Scripts
+
+| Command         | What it does                         |
+| --------------- | ------------------------------------ |
+| `npm run dev`   | Start the docs site                  |
+| `npm run build` | Static export into `out/`            |
+| `npm run start` | Preview the exported site locally    |
+| `npm run lint`  | ESLint                               |
+
+## License
+
+MIT

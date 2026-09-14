@@ -1,0 +1,353 @@
+export type ComponentGroup =
+  | "Actions"
+  | "Forms"
+  | "Display"
+  | "Feedback"
+  | "Navigation"
+  | "Overlays"
+  | "Layout";
+
+export type ComponentMeta = {
+  slug: string;
+  name: string;
+  number: string;
+  group: ComponentGroup;
+  description: string;
+  file: string;
+};
+
+export const groups: ComponentGroup[] = [
+  "Actions",
+  "Forms",
+  "Display",
+  "Feedback",
+  "Navigation",
+  "Overlays",
+  "Layout",
+];
+
+export const components: ComponentMeta[] = [
+  {
+    slug: "button",
+    name: "Button",
+    number: "01",
+    group: "Actions",
+    description: "Letterpress actions with a stamp shadow that yields when pressed.",
+    file: "src/library/components/button.tsx",
+  },
+  {
+    slug: "toggle",
+    name: "Toggle",
+    number: "02",
+    group: "Actions",
+    description: "A two-state control for formatting, filters, and quiet preferences.",
+    file: "src/library/components/toggle.tsx",
+  },
+  {
+    slug: "toggle-group",
+    name: "Toggle Group",
+    number: "03",
+    group: "Actions",
+    description: "Clustered toggles that share a plate, single or multiple.",
+    file: "src/library/components/toggle-group.tsx",
+  },
+  {
+    slug: "input",
+    name: "Input",
+    number: "04",
+    group: "Forms",
+    description: "A hard-edged field that lights the safelight on focus.",
+    file: "src/library/components/input.tsx",
+  },
+  {
+    slug: "textarea",
+    name: "Textarea",
+    number: "05",
+    group: "Forms",
+    description: "Long-form writing space with the same plate as Input.",
+    file: "src/library/components/textarea.tsx",
+  },
+  {
+    slug: "checkbox",
+    name: "Checkbox",
+    number: "06",
+    group: "Forms",
+    description: "A stamped square with an amber check when selected.",
+    file: "src/library/components/checkbox.tsx",
+  },
+  {
+    slug: "radio-group",
+    name: "Radio Group",
+    number: "07",
+    group: "Forms",
+    description: "Exclusive choices, rendered as darkroom apertures.",
+    file: "src/library/components/radio-group.tsx",
+  },
+  {
+    slug: "switch",
+    name: "Switch",
+    number: "08",
+    group: "Forms",
+    description: "A sliding plate for binary settings.",
+    file: "src/library/components/switch.tsx",
+  },
+  {
+    slug: "slider",
+    name: "Slider",
+    number: "09",
+    group: "Forms",
+    description: "Continuous values, thumb cut like a lens stop.",
+    file: "src/library/components/slider.tsx",
+  },
+  {
+    slug: "select",
+    name: "Select",
+    number: "10",
+    group: "Forms",
+    description: "A custom listbox that drops like a contact sheet.",
+    file: "src/library/components/select.tsx",
+  },
+  {
+    slug: "label",
+    name: "Label",
+    number: "11",
+    group: "Forms",
+    description: "Catalog-style captions for form controls.",
+    file: "src/library/components/label.tsx",
+  },
+  {
+    slug: "field",
+    name: "Field",
+    number: "12",
+    group: "Forms",
+    description: "Label, control, hint, and error stacked as one unit.",
+    file: "src/library/components/field.tsx",
+  },
+  {
+    slug: "input-group",
+    name: "Input Group",
+    number: "13",
+    group: "Forms",
+    description: "Prefix and suffix plates fused to a single field.",
+    file: "src/library/components/groups.tsx",
+  },
+  {
+    slug: "input-otp",
+    name: "Input OTP",
+    number: "14",
+    group: "Forms",
+    description: "One glyph per frame — paste fills the strip.",
+    file: "src/library/components/input-otp.tsx",
+  },
+  {
+    slug: "badge",
+    name: "Badge",
+    number: "15",
+    group: "Display",
+    description: "Print labels for status, process, and chemistry.",
+    file: "src/library/components/badge.tsx",
+  },
+  {
+    slug: "avatar",
+    name: "Avatar",
+    number: "16",
+    group: "Display",
+    description: "Circular portraits with a fallback plate.",
+    file: "src/library/components/avatar.tsx",
+  },
+  {
+    slug: "card",
+    name: "Card",
+    number: "17",
+    group: "Display",
+    description: "A sheet of fiber paper with a registration shadow.",
+    file: "src/library/components/card.tsx",
+  },
+  {
+    slug: "table",
+    name: "Table",
+    number: "18",
+    group: "Display",
+    description: "Tabular data with catalog headers.",
+    file: "src/library/components/table.tsx",
+  },
+  {
+    slug: "kbd",
+    name: "Kbd",
+    number: "19",
+    group: "Display",
+    description: "Keyboard glyphs, set like metal type.",
+    file: "src/library/components/kbd.tsx",
+  },
+  {
+    slug: "separator",
+    name: "Separator",
+    number: "20",
+    group: "Display",
+    description: "A hairline rule between regions.",
+    file: "src/library/components/separator.tsx",
+  },
+  {
+    slug: "aspect-ratio",
+    name: "Aspect Ratio",
+    number: "21",
+    group: "Layout",
+    description: "Lock a frame to 16:9, 4:3, 1:1 — like a film gate.",
+    file: "src/library/components/aspect-ratio.tsx",
+  },
+  {
+    slug: "scroll-area",
+    name: "Scroll Area",
+    number: "22",
+    group: "Layout",
+    description: "A clipped viewport for overflowing content.",
+    file: "src/library/components/groups.tsx",
+  },
+  {
+    slug: "accordion",
+    name: "Accordion",
+    number: "23",
+    group: "Display",
+    description: "Stacked revelations, opened with a plus that becomes a minus.",
+    file: "src/library/components/accordion.tsx",
+  },
+  {
+    slug: "tabs",
+    name: "Tabs",
+    number: "24",
+    group: "Navigation",
+    description: "Panel switching with a safelight on the active plate.",
+    file: "src/library/components/tabs.tsx",
+  },
+  {
+    slug: "collapsible",
+    name: "Collapsible",
+    number: "25",
+    group: "Display",
+    description: "Show and hide a region without the accordion chrome.",
+    file: "src/library/components/collapsible.tsx",
+  },
+  {
+    slug: "breadcrumb",
+    name: "Breadcrumb",
+    number: "26",
+    group: "Navigation",
+    description: "A trail of plates back to the start of the roll.",
+    file: "src/library/components/breadcrumb.tsx",
+  },
+  {
+    slug: "pagination",
+    name: "Pagination",
+    number: "27",
+    group: "Navigation",
+    description: "Frame numbers for long lists.",
+    file: "src/library/components/pagination.tsx",
+  },
+  {
+    slug: "alert",
+    name: "Alert",
+    number: "28",
+    group: "Feedback",
+    description: "Inline notices — lamp, lens, or stop bath.",
+    file: "src/library/components/alert.tsx",
+  },
+  {
+    slug: "progress",
+    name: "Progress",
+    number: "29",
+    group: "Feedback",
+    description: "Exposure filling a gated track.",
+    file: "src/library/components/progress.tsx",
+  },
+  {
+    slug: "spinner",
+    name: "Spinner",
+    number: "30",
+    group: "Feedback",
+    description: "A developing ring while you wait.",
+    file: "src/library/components/spinner.tsx",
+  },
+  {
+    slug: "skeleton",
+    name: "Skeleton",
+    number: "31",
+    group: "Feedback",
+    description: "Placeholder plates pulsing like a test strip.",
+    file: "src/library/components/skeleton.tsx",
+  },
+  {
+    slug: "toast",
+    name: "Toast",
+    number: "32",
+    group: "Feedback",
+    description: "Transient notices that wash in from the corner.",
+    file: "src/library/components/toast.tsx",
+  },
+  {
+    slug: "empty",
+    name: "Empty",
+    number: "33",
+    group: "Feedback",
+    description: "A composed blank when there is nothing to develop.",
+    file: "src/library/components/empty.tsx",
+  },
+  {
+    slug: "dialog",
+    name: "Dialog",
+    number: "34",
+    group: "Overlays",
+    description: "A modal sheet centered on the light table.",
+    file: "src/library/components/dialog.tsx",
+  },
+  {
+    slug: "drawer",
+    name: "Drawer",
+    number: "35",
+    group: "Overlays",
+    description: "A sliding panel from the edge of the darkroom.",
+    file: "src/library/components/drawer.tsx",
+  },
+  {
+    slug: "tooltip",
+    name: "Tooltip",
+    number: "36",
+    group: "Overlays",
+    description: "A short caption on hover or focus.",
+    file: "src/library/components/overlays.tsx",
+  },
+  {
+    slug: "popover",
+    name: "Popover",
+    number: "37",
+    group: "Overlays",
+    description: "A small floating plate for extra controls.",
+    file: "src/library/components/overlays.tsx",
+  },
+  {
+    slug: "hover-card",
+    name: "Hover Card",
+    number: "38",
+    group: "Overlays",
+    description: "Rich preview that appears without a click.",
+    file: "src/library/components/overlays.tsx",
+  },
+  {
+    slug: "dropdown-menu",
+    name: "Dropdown Menu",
+    number: "39",
+    group: "Overlays",
+    description: "Actions listed like a shot list.",
+    file: "src/library/components/overlays.tsx",
+  },
+];
+
+export function getComponent(slug: string) {
+  return components.find((item) => item.slug === slug);
+}
+
+export const docsNav = [
+  { href: "/docs", label: "Introduction" },
+  { href: "/docs/installation", label: "Installation" },
+  { href: "/docs/theming", label: "Theming" },
+  { href: "/docs/components", label: "All components" },
+];
