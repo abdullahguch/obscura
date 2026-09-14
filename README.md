@@ -16,6 +16,8 @@ You copy the source into your project. You own every line.
 ## Run the site
 
 ```bash
+git clone https://github.com/abdullahguch/obscura.git
+cd obscura
 npm install
 npm run dev
 ```
@@ -51,22 +53,6 @@ src/library/          ← the component library (copy this)
 src/app/              ← marketing + docs site
 src/site/             ← website chrome, registry, demos
 ```
-
-## Deploy (Hestia)
-
-The site is a static export. `npm run build` writes HTML/CSS/JS to `out/`. Upload that folder’s contents to the subdomain’s `public_html`.
-
-1. Point DNS: `A` record `obscura` → your VPS IP.
-2. In Hestia: **Web → Add Web Domain** → `obscura.abdullahguc.com`.
-3. Enable **SSL / Let’s Encrypt** after DNS has propagated.
-4. Build and upload:
-
-```bash
-npm run build
-rsync -avz --delete --exclude '.well-known' out/ USER@YOUR_VPS:/home/USER/web/obscura.abdullahguc.com/public_html/
-```
-
-Replace `USER` with the Hestia account that owns the domain.
 
 ## Scripts
 

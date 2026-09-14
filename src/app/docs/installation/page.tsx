@@ -17,7 +17,7 @@ export default function InstallationPage() {
       <h2 className="mt-10 font-display text-2xl italic">Run this site</h2>
       <CodeBlock
         className="mt-4"
-        code={`git clone https://github.com/abdullahguc/obscura.git
+        code={`git clone https://github.com/abdullahguch/obscura.git
 cd obscura
 npm install
 npm run dev`}
