@@ -2,7 +2,7 @@
 
 A React component library developed in the darkroom.
 
-Not another zinc-and-radius kit. Obscura is **39 primitives** with fiber-paper surfaces, letterpress shadows, catalog type, and a single amber safelight for signal. The component types will feel familiar (buttons, dialogs, tables). The design will not.
+Obscura is **39 primitives** with fiber-paper surfaces, letterpress shadows, catalog type, and a single amber safelight for signal. The component types will feel familiar (buttons, dialogs, tables). The design will not.
 
 You copy the source into your project. You own every line.
 
@@ -11,7 +11,7 @@ You copy the source into your project. You own every line.
 - React 19 + Next.js (docs site)
 - TypeScript
 - Tailwind CSS v4
-- No Radix, no Headless UI — accessible HTML written in this repo
+- Accessible HTML written in this repo
 
 ## Run the site
 

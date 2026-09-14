@@ -18,10 +18,8 @@ export default function DocsIndexPage() {
         safelight used only when something needs to signal.
       </p>
       <p className="mt-4 text-ink-soft">
-        The component types will feel familiar if you have used other kits — buttons,
-        dialogs, inputs, tables — but nothing here is a restyle of Radix-and-zinc. Every
-        primitive is written in this repository, with accessible HTML, so you can read it,
-        change it, and publish it as yours.
+        Buttons, dialogs, inputs, tables — every primitive is written in this repository,
+        with accessible HTML, so you can read it, change it, and publish it as yours.
       </p>
       <div className="mt-8 flex flex-wrap gap-3">
         <Link href="/docs/installation" className={buttonVariants()}>
@@ -36,7 +34,7 @@ export default function DocsIndexPage() {
         <li>Copy-paste source under <code className="font-mono text-ink">src/library</code></li>
         <li>Token-driven theming in CSS variables (studio light and darkroom)</li>
         <li>A promotional docs site you can deploy next to the GitHub repo</li>
-        <li>No runtime UI kit dependency — no Radix, no Headless UI</li>
+        <li>Accessible primitives you can read and change</li>
       </ul>
     </article>
   );
